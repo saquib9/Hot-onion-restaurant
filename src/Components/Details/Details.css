@@ -1,0 +1,20 @@
+.details img{
+    width: 40%;
+    float: right;
+}
+
+.quantityPlace{
+    border: 1px solid tomato;
+    border-radius: 30px;
+    padding: 5px 35px;
+    cursor: pointer;
+    width: 67px;
+}
+
+.reads{
+    width: 45%;
+}
+
+.details{
+    margin: 80px 200px;
+}

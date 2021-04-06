@@ -1,24 +1,56 @@
-import logo from './logo.svg';
+import { createContext, useEffect, useState } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import './App.css';
+import Cart from "./Components/Cart/Cart";
+import Details from "./Components/Details/Details";
+import Header from "./Components/Header/Header";
+import Home from './Components/Home/Home';
+import fakeData from "./fakeData/fakeData";
+import { getDatabaseCart } from "./utilities/databaseManager";
+
+export const Boss = createContext()
 
 function App() {
+
+const [cart, setCart] = useState([])
+const [dbUpdated, setDbUpdated] = useState(0)
+
+useEffect(() => {
+    const savedCart = getDatabaseCart();
+    const itemKeys = Object.keys(savedCart)
+
+    const previousCart = itemKeys.map( id => {
+        const dish = fakeData.find( data => data.id === parseInt(id) );
+        dish.quantity = savedCart[id];
+        return dish
+    })
+    setCart(previousCart)
+},[dbUpdated])
+
+// console.log(cart)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Boss.Provider value={ [cart, dbUpdated, setDbUpdated] }>
+      <Router>
+      <Header></Header>
+        <Switch>
+          <Route exact path='/'>
+              <Home></Home>
+          </Route>
+          <Route path='/cart'>
+              <Cart></Cart>
+          </Route>
+          <Route path='/details/:itemKey'>
+              <Details></Details>     
+          </Route>
+        </Switch>
+      </Router>
+    </Boss.Provider>
   );
 }
 

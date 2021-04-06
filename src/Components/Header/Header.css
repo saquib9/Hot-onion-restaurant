@@ -1,0 +1,28 @@
+img{
+    width: 13%; 
+    padding-bottom: 15px;
+}
+
+.header{
+    background-color: black;
+ /* line-height: 40px; */
+    font-size: 20px;
+    padding: 25px 25px 5px 25px;
+}
+
+.header a{
+    text-decoration: none;
+    color: white;
+    float: right;
+    margin-right: 20px;
+    padding: 10px 18px 15px 18px;
+}
+
+.header a:hover{
+   
+}
+
+#highlight{
+    background-color: rgb(170, 0, 28);
+    border-radius: 25px;
+}

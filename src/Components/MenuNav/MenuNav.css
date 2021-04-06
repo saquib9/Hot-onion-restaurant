@@ -1,0 +1,17 @@
+.MenuNav h2{
+    display: inline-block;
+    margin: 45px 20px 10px 20px;
+    cursor: pointer;
+}
+
+.MenuNav nav{
+    text-align: center;
+}
+
+.MenuNav h2:hover{
+    color: rgb(247, 139, 139);
+}
+
+.selected{
+    color:  rgb(204, 60, 60);
+}

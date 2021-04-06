@@ -1,0 +1,22 @@
+.card{
+    border: 1px solid blue;
+    width: 23%;
+    display: inline-block;
+    margin: 7px 20px;
+    padding: 10px;
+    text-align: center;
+    line-height: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+
+
+.card img{
+    width: 70%;
+}
+
+#description{
+    color: gray;
+    font-weight: 600;
+}
