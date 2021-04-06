@@ -6,7 +6,7 @@ import './Cart.css'
 
 const Cart = () => {
 
-    const [cart] = useContext(Boss)
+    const [cart] = useContext(Boss);
 
     let total = 0;
     let subTotal = 0;
