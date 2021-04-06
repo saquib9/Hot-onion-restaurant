@@ -1,67 +1,25 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Boss } from '../../App';
 import { addToDatabaseCart, getDatabaseCart } from '../../utilities/databaseManager';
+import Calculator from '../Calculator/Calculator';
+import ShipmentForm from '../ShipmentForm/ShipmentForm';
 import './Cart.css'
 
 const Cart = () => {
 
-    const [cart] = useContext(Boss)
+    const [address, setAddress] = useState()
 
-    let total = 0;
-    let subTotal = 0;
-    let tax = 0;
-    const deliveryCharge = 2;
-    let unit = 0;
-
-    cart.map(a => {
-        unit = unit + a.quantity;
-        subTotal = subTotal + a.price * a.quantity;
-        tax = subTotal * 0.15;
-        total = subTotal + tax + deliveryCharge;
-    })
+    console.log('adrress paisi : ' ,address)
 
     return (
         <div id='cartPage'>
-            <div className='half'><h1> This is for address </h1></div>
             <div className='half'>
-                    <div id='memo'>   
-                        <p>From <strong>Gulshan Plaza Restaurant, Gulshan</strong></p>
-                        <p>Arriving in 20-30 mins</p>
-                        <p>To <strong>Address</strong> </p>
+                  <ShipmentForm setAddress={setAddress}></ShipmentForm>
+            </div>
 
-                    {
-                        cart.map( f => 
-                        <div className='smallBox'> 
-                            <img src={f.img} alt=""/>
-                            
-                            <br/>
-                            <br/>
-                            <div className='quantity'>
-                                <h3>Quantity : {f.quantity}</h3>
-                                <Link to={'/details/'+f.id}>
-                                <h5><button className='smallButton'> Change Quantity </button></h5>
-                                </Link>
-                            </div>
-
-                            <h5>{f.name} </h5> 
-                            <h3>${f.price}</h3>
-                            <p><small>Delivery Fee</small></p>
-                            
-                        </div>)
-                    }
-                    
-                    <div id='calculation'>
-                        <h3>Subtotal - {unit} item  <span style={{float:'right'}}> ${subTotal} </span></h3>
-                        <h3>Tax  <span style={{float:'right'}}> ${tax} </span></h3>
-                        <h3>Delivery  <span style={{float:'right'}}> ${deliveryCharge} </span></h3>
-                        <h3>Total  <span style={{float:'right'}}> ${total} </span></h3>
-                        <br/>
-                        <h1><button style={{width : '100%'}} className='mainButton'>Place Order</button></h1>
-                    </div>
-                        
-
-                    </div>
+            <div className='half'>
+                  <Calculator address={address}></Calculator>
             </div> 
         </div>
     );

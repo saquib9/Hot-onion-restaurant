@@ -1,0 +1,45 @@
+#memo{
+    padding: 0px 0px 10px 30px;
+}
+
+.smallBox{
+    width: 550px;
+    height: 200px;
+    background-color: rgb(245, 244, 241);
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    vertical-align: text-top;
+}
+
+.smallBox img{
+    width: 160px;
+    float: left;
+    margin: 20px 20px 0px 20px;
+}
+
+.quantity{
+    float: right;
+    text-align: center;
+    line-height: 0px;
+    padding-right: 20px;
+    padding-top: 25px;
+}
+
+
+#calculation{
+    padding: 5px 0px 5px 5px;
+}
+
+.smallButton{
+    color: white;
+    border: 1px solid rgb(141, 9, 9);
+    border-radius: 30px;
+    background-color: rgb(182, 37, 32);
+    padding: 5px 20px;
+    cursor: pointer;
+  }
+
+button:disabled{
+    background-color: rgb(177, 177, 177) !important;
+}

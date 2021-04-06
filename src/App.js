@@ -10,6 +10,9 @@ import Cart from "./Components/Cart/Cart";
 import Details from "./Components/Details/Details";
 import Header from "./Components/Header/Header";
 import Home from './Components/Home/Home';
+import LinkNotFound from "./Components/LinkNotFound/LinkNotFound";
+import LogIn from "./Components/LogIn/LogIn";
+import OrderOnWay from "./Components/OrderOnWay/OrderOnWay";
 import fakeData from "./fakeData/fakeData";
 import { getDatabaseCart } from "./utilities/databaseManager";
 
@@ -42,11 +45,20 @@ useEffect(() => {
           <Route exact path='/'>
               <Home></Home>
           </Route>
+          <Route path='/login'>
+              <LogIn></LogIn>
+          </Route>
           <Route path='/cart'>
               <Cart></Cart>
           </Route>
           <Route path='/details/:itemKey'>
               <Details></Details>     
+          </Route>
+          <Route path='/orderOnTheWay'>
+              <OrderOnWay></OrderOnWay>
+          </Route>
+          <Route path='*'>
+              <LinkNotFound></LinkNotFound>
           </Route>
         </Switch>
       </Router>
