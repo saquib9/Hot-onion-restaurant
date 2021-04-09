@@ -8,18 +8,18 @@ import './Cart.css'
 
 const Cart = () => {
 
-    const [address, setAddress] = useState()
+    // const [address, setAddress] = useState()
 
-    console.log('adrress paisi : ' ,address)
+    // console.log('adrress paisi : ' ,address)
 
     return (
         <div id='cartPage'>
             <div className='half'>
-                  <ShipmentForm setAddress={setAddress}></ShipmentForm>
+                  <ShipmentForm></ShipmentForm>
             </div>
 
             <div className='half'>
-                  <Calculator address={address}></Calculator>
+                  <Calculator></Calculator>
             </div> 
         </div>
     );

@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { Boss } from '../../App';
+import { Link, useHistory } from 'react-router-dom';
+import { Address, Boss } from '../../App';
 import './Calculator.css'
 
-const Calculator = (props) => {
+const Calculator = () => {
 
-    const address = props.address
+    const [address, setAddress] = useContext(Address)
     const [cart] = useContext(Boss)
 
     let total = 0;
@@ -20,6 +20,14 @@ const Calculator = (props) => {
         tax = subTotal * 0.15;
         total = subTotal + tax + deliveryCharge;
     })
+
+    const history = useHistory()
+
+    const handleProceedCheckout = () => {
+        history.push('/orderOnTheWay');
+    }
+
+
 
     return (
         <div id='memo'>   
@@ -57,9 +65,9 @@ const Calculator = (props) => {
 
                     {(address) 
                         ? 
-                        <Link to={'/orderOnTheWay'}>
-                            <h1> <button style={{width : '100%'}} className='submitButton'>Place Order</button></h1>
-                        </Link>
+                        // <Link to={'/orderOnTheWay'}></Link>
+                            <h1> <button style={{width : '100%'}} className='submitButton' onClick={handleProceedCheckout}>Place Order</button></h1>
+                        
                         : <h1> <button style={{width : '100%', backgroundColor:'gray'}} className='submitButton' disabled>Place Order</button></h1>
                          
                     }

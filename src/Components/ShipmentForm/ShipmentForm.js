@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import './ShipmentForm.css'
+import { Address } from '../../App'
 
-const ShipmentForm = (props) => {
+const ShipmentForm = () => {
 
-    const setAddress = props.setAddress;
+    const [address, setAddress] = useContext(Address)
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 

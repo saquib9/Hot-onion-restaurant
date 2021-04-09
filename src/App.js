@@ -13,15 +13,22 @@ import Home from './Components/Home/Home';
 import LinkNotFound from "./Components/LinkNotFound/LinkNotFound";
 import LogIn from "./Components/LogIn/LogIn";
 import OrderOnWay from "./Components/OrderOnWay/OrderOnWay";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import fakeData from "./fakeData/fakeData";
 import { getDatabaseCart } from "./utilities/databaseManager";
 
+
 export const Boss = createContext()
+export const Address = createContext()
+export const UserContext = createContext();
 
 function App() {
 
 const [cart, setCart] = useState([])
+const [loggedInUser, setLoggedInUser] = useState({})
 const [dbUpdated, setDbUpdated] = useState(0)
+
+const [address, setAddress] = useState()
 
 useEffect(() => {
     const savedCart = getDatabaseCart();
@@ -35,10 +42,12 @@ useEffect(() => {
     setCart(previousCart)
 },[dbUpdated])
 
-// console.log(cart)
 
   return (
     <Boss.Provider value={ [cart, dbUpdated, setDbUpdated] }>
+    <Address.Provider value={[address, setAddress]}>
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+      {/* <h2>Name : {loggedInUser.displayName}</h2> */}
       <Router>
       <Header></Header>
         <Switch>
@@ -54,14 +63,16 @@ useEffect(() => {
           <Route path='/details/:itemKey'>
               <Details></Details>     
           </Route>
-          <Route path='/orderOnTheWay'>
+          <PrivateRoute path='/orderOnTheWay'>
               <OrderOnWay></OrderOnWay>
-          </Route>
+          </PrivateRoute>
           <Route path='*'>
               <LinkNotFound></LinkNotFound>
           </Route>
         </Switch>
       </Router>
+    </UserContext.Provider>
+    </Address.Provider>
     </Boss.Provider>
   );
 }
