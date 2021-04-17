@@ -164,9 +164,9 @@ const LogIn = () => {
           {
             user.success && <p style={{color : 'green'}}>User {newUser ? 'signed up' : 'logged in'} successfully!</p>
           }
-          {
+          {/* {
             !user.success && <p style={{color : 'red'}}>User {newUser ? 'signed up' : 'logged in'} wrong</p>
-          }
+          } */}
     
         </div>
       );

@@ -8,11 +8,7 @@ import './Cart.css'
 
 const Cart = () => {
 
-<<<<<<< HEAD
     // const [address, setAddress] = useState()
-=======
-    const [cart] = useContext(Boss);
->>>>>>> c8688976602eef97dfdd14aeffa6f34ce304e363
 
     // console.log('adrress paisi : ' ,address)
 
